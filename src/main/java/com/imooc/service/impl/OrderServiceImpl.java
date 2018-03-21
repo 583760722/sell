@@ -3,6 +3,7 @@ package com.imooc.service.impl;
 import com.imooc.dataobject.OrderDetail;
 import com.imooc.dataobject.OrderMaster;
 import com.imooc.dataobject.ProductInfo;
+import com.imooc.dto.CartDTO;
 import com.imooc.dto.OrderDTO;
 import com.imooc.enums.OrderMasterEnum;
 import com.imooc.enums.PayStatusEnum;
@@ -23,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author zhy
@@ -85,8 +87,10 @@ public class OrderServiceImpl implements OrderService {
         orderMasterRepository.save(orderMaster);
 
         //扣库存
-//        productService.decreaseStock();
-
+        List<CartDTO> cartDTOList = orderDTO.getOrderDetailList().
+                stream().map(e -> new CartDTO(e.getProductId(), e.getProductQuantity())).
+                collect(Collectors.toList());
+        productService.decreaseStock(cartDTOList);
         return orderDTO;
     }
 

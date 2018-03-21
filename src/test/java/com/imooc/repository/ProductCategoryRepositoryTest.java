@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,11 +19,12 @@ import java.util.Optional;
 @SpringBootTest
 public class ProductCategoryRepositoryTest {
     @Test
+    public void findByCategoryTypeIn1() throws Exception {
+    }
+
+    @Test
     public void findByCategoryTypeIn() throws Exception {
-        List<Integer> categoryList = new ArrayList<>();
-        categoryList.add(1);
-        categoryList.add(2);
-        categoryList.add(4);
+        List<Integer> categoryList = Arrays.asList(2, 3, 4, 5);
         List<ProductCategory> byCategoryTypeIn = repository.findByCategoryTypeIn(categoryList);
         System.out.println(byCategoryTypeIn);
         Assert.assertNotEquals(0,byCategoryTypeIn.size());

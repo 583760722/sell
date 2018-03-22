@@ -19,6 +19,16 @@ public class ResultVOUtil {
 
         return resultVO;
     }
+    public static ResultVO failure(Object o) {
+        ResultVO resultVO = new ResultVO();
+        resultVO.setCode(1);
+        resultVO.setMessage("success");
+        resultVO.setData(o);
+        return resultVO;
+    }
+    public static ResultVO failure() {
+        return failure(null);
+    }
 
     public static ResultVO success() {
         return success(null);

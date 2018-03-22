@@ -19,6 +19,9 @@ public class OrderMasterRepositoryTest {
     @Autowired
     private OrderMasterRepository repository;
 
+    @Autowired
+    private ProductCategoryRepository categoryRepository;
+
     @Test
     public void saveTest() {
 

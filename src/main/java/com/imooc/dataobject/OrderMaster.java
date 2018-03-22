@@ -1,6 +1,6 @@
 package com.imooc.dataobject;
 
-import com.imooc.enums.OrderMasterEnum;
+import com.imooc.enums.OrderStatusEnum;
 import com.imooc.enums.PayStatusEnum;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
@@ -44,7 +44,7 @@ public class OrderMaster implements Serializable{
     /** 订单总金额 **/
     private BigDecimal orderAmount;
     /** 订单状态，默认为新下单 **/
-    private Integer orderStatus = OrderMasterEnum.NEW.getCode();
+    private Integer orderStatus = OrderStatusEnum.NEW.getCode();
 
     /** 支付状态，默认为未支付 **/
     private Integer payStatus = PayStatusEnum.WAIT.getCode();

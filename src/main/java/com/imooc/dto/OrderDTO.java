@@ -1,8 +1,6 @@
 package com.imooc.dto;
 
 import com.imooc.dataobject.OrderDetail;
-import com.imooc.enums.OrderMasterEnum;
-import com.imooc.enums.PayStatusEnum;
 import lombok.Data;
 
 import java.io.Serializable;

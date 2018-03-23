@@ -65,7 +65,6 @@ public class ProductInfoRepositoryTest {
     }
 
     @Test
-    @Transactional(rollbackFor = RuntimeException.class, propagation = Propagation.REQUIRED)
     public void testTransaction1() {
         ProductInfo productInfo = new ProductInfo();
         productInfo.setProductId("karal98K");
@@ -75,7 +74,7 @@ public class ProductInfoRepositoryTest {
         productInfo.setProductStock(100);
         productInfo.setProductDescription("妈妈的味道");
         productInfo.setProductIcon("http://www.xxx.png");
-        productInfo.setCategoryType(2);
+        productInfo.setCategoryType(1);
 
         productInfo.setProductStatus(0);
         productService.save(productInfo);

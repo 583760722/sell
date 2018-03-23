@@ -41,14 +41,11 @@ public class ProductCategoryRepositoryTest {
     }
 
     @Test
-    @Transactional
     public void fun2() {
         ProductCategory p = new ProductCategory();
-        p.setCategoryName("男士最爱");
-        p.setCategoryType(3);
+        p.setCategoryName("女士最爱");
+        p.setCategoryType(1);
         ProductCategory save = repository.save(p);
-        System.out.println(save);
-
         Assert.assertNotNull(save);
 
     }

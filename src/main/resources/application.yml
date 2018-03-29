@@ -9,8 +9,6 @@ spring:
     show-sql: true
   jackson:
     default-property-inclusion: non_null
-  profiles:
-    active:
 server:
   servlet:
     context-path: /sell

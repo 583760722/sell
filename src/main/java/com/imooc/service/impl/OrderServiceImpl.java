@@ -20,6 +20,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -210,5 +211,17 @@ public class OrderServiceImpl implements OrderService {
             throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
         }
         return orderDTO;
+    }
+
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public Page<OrderDTO> findList(Pageable pageable) {
+        Page<OrderMaster> result = orderMasterRepository.findAll(pageable);
+
+        List<OrderMaster> orderMasterList = result.getContent();
+        List<OrderDTO> convert = OrderMaster2OrderDTOConverter.convert(orderMasterList);
+
+
+        return new PageImpl<>(convert,pageable,result.getTotalElements());
     }
 }

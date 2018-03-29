@@ -21,6 +21,14 @@ import static org.junit.Assert.*;
 @SpringBootTest
 @Slf4j
 public class OrderServiceImplTest {
+    @Test
+    public void findList1() throws Exception {
+        PageRequest pageRequest = PageRequest.of(0, 100);
+        Page<OrderDTO> list = orderService.findList(pageRequest);
+        Assert.assertTrue("不为空", list != null);
+        log.info("OrderDTOList={}",list.getContent());
+    }
+
     @Autowired
     private OrderServiceImpl orderService;
 
